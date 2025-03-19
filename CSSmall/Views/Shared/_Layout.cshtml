@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var roleID = HttpContextAccessor.HttpContext?.Session?.GetInt32("UserRole");
+    var username = HttpContextAccessor.HttpContext?.Session?.GetString("Username");
+    bool isHomePage = ViewData["Title"]?.ToString() == "Startsida";
+}
+<!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
@@ -13,19 +19,25 @@
 
     <!-- Navigeringsmeny Gäst-->
     <nav>
-        <div class="logo">
+        <a asp-controller="Home" asp-action="Index" class="logo">
             <img src="~/images/logo.png" alt="Hotell Logo">
-           <h1>HOTELL LYX</h1>
-        </div>
+            <h1>HOTELL LYX</h1>
+        </a>
+
         <ul class="nav-links">
             <li><a asp-controller="Rooms" asp-action="Index">Rum</a></li>
             <li><a asp-controller="Home" asp-action="Food">Mat & Dryck</a></li>
             <li><a asp-controller="Home" asp-action="Event">Event</a></li>
             <li><a asp-controller="Home" asp-action="Offers">Erbjudanden</a></li>
+
+            @if (roleID == 1) // Visa Admin endast för behöriga användare
+            {
+                <li><a asp-controller="Dashboard" asp-action="Index">Admin</a></li>
+            }
+
         </ul>
         <a href="/Login" class="button login-btn">
-            <img src="~/images/login.png" alt="Logga in" class="login-icon"> Logga in
-        </a>
+            <img src="~/images/login.png" alt="Logga in" class="login-icon"> Logga in</a>
     </nav>
 
     <main>

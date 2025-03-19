@@ -10,7 +10,7 @@ namespace YourNamespace.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string username, string email, string password)
+        public IActionResult Login(string username, string password)
         {
             if (username == "test" && password == "1234")
             {

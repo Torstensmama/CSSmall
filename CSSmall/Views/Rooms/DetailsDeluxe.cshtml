@@ -1,17 +1,17 @@
 ﻿@{
     Layout = "_Layout";
     ViewData["Title"] = "Standard";
-    var headerImage = "/images/Deluxe/deluxe1.png";
+  
 }
 <!-- Hero-header -->
-<div class="room-hero" style="background-image: url('@headerImage');">
+
     <div class="room-hero-content">
         <h1>Deluxe</h1>
     </div>
-</div>
+
 
 <section class="room-selection">
-    <h2>Deluxe rum</h2>
+ 
 
 <!-- Deluxerum -->
 <div class="room-card">
@@ -31,19 +31,9 @@
             Perfekt för dig som vill unna dig det lilla extra under din vistelse.
         </p>
 
-        <div class="price-options">
-            <label><input type="radio" name="deluxe-price" checked> Ej återbetalningsbar - 2250 SEK</label>
-            <label><input type="radio" name="deluxe-price"> Fri avbokning - 2500 SEK</label>
-        </div>
-
-        <div class="total-price">
-            <strong>Total: 2250 SEK</strong>
-        </div>
-        <button class="book-button">Boka</button>
-            <a href="@Url.Action("Index", "Rooms")" class="info-button">Tillbaka</a>
-
-
-    </div>
+            <div>
+                <a href="@Url.Action("Index", "Rooms")" class="info-button">Tillbaka</a>
+            </div>
 
 </div>
 </section>

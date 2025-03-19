@@ -33,15 +33,22 @@ nav {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 3px;
+    text-decoration: none;   
+    color: #333;              
+    display: flex;           
+    align-items: center;      
+    gap: 10px;               
 }
 
-    .logo img {
-        height: 50px;
-        width: auto;
-    }
+.logo img {
+    height: 50px;             
+}
+
+.logo:hover {
+    cursor: pointer;
+    opacity: 0.9;            
+}
+
 
 .nav-links {
     list-style: none;
@@ -198,7 +205,7 @@ nav {
     gap: 40px;
 }
 
-/* Text-sektion */
+/* Restaurang, Text-sektion */
 .restaurant-text {
     flex: 1;
     color: var(--text-color);
@@ -220,7 +227,7 @@ nav {
         border-radius: 20px; /* Rundade kanter på bilden */
     }
 
-/* Footer */
+/* FOOTER */
 footer {
     background-color: var(--secondary-color);
     padding: 20px 5%;
@@ -238,7 +245,7 @@ footer {
     padding-top: 10px;
 }
 
-/* Hotellinfo */
+/* Footer, Hotellinfo */
 .footer-info {
     flex: 1;
     text-align: left;
@@ -254,7 +261,7 @@ footer {
         margin: 5px 0;
     }
 
-/*  Kontakt */
+/*  Footer, Kontakt */
 .footer-contact {
     flex: 1;
     text-align: center;
@@ -264,7 +271,7 @@ footer {
         margin: 5px 0;
     }
 
-/* Nyhetsbrev */
+/* Footer, Nyhetsbrev */
 .footer-newsletter {
     flex: 1;
     text-align: right;
@@ -488,9 +495,10 @@ footer {
     background-color: var(--primary-color);
     padding: 8px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 10px;
 }
 
     .book-button:hover {
@@ -502,10 +510,10 @@ footer {
     background-color: var(--primary-color);
     padding: 8px 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: bold;
+    margin-top: 10px;
 }
 
     .info-button:hover {
@@ -522,13 +530,15 @@ footer {
 .room-card {
     display: flex;
     background: white;
-    width: 950px;
+    width: 100%; /* Anpassa bredden baserat på skärmens storlek */
+    max-width: 1700px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto; /* Centrerar kortet */
     gap: 20px;
 }
+
 
 .room-images {
     flex: 1;

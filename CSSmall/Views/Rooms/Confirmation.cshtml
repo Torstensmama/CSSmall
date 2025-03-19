@@ -1,20 +1,14 @@
-﻿@{
-    Layout = "_Layout";
+﻿@model CSSmall.Models.Booking
+
+@{
     ViewData["Title"] = "Bokningsbekräftelse";
-    var headerImage = "/images/hotel.png";
 }
-<!-- Hero-header -->
-<div class="room-hero" style="background-image: url('@headerImage');">
-    <div class="room-hero-content">
-        <h1>Bokningsbekräftelse</h1>
-    </div>
-</div>
 
-<section class="room-selection">
-    <h2>Standardrum</h2>
+<h1>Tack för din bokning!</h1>
 
-    <!-- Standardrum -->
-    <div class="room-card">
-     
-    </div>
-</section>
+<p>Din bokning är bekräftad för rum @Model.RoomID.</p>
+<p>Incheckning: @Model.StartDate.ToShortDateString()</p>
+<p>Utcheckning: @Model.EndDate.ToShortDateString()</p>
+<p>Totalpris: @Model.TotalSum SEK</p>
+
+<a asp-action="Index" asp-controller="Rooms">Tillbaka till startsidan</a>
