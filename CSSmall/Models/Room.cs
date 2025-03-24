@@ -2,27 +2,28 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CSSmall.Models
-{
-    public class Room
+
+    namespace CSSmall.Models
     {
-        [Key]
-        public int RoomID { get; set; }
+        public class Room
+        {
+            [Key]
+            public int RoomID { get; set; }
 
-        [Required]
-        public string RoomType { get; set; }
+            [Required]
+            public string RoomNumber { get; set; }
 
-        [Required]
-        public bool IsVacant { get; set; }
+            [Required]
+            public string RoomType { get; set; }
 
-        [Required]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal Price { get; set; }
+            [Required]
+            public bool IsVacant { get; set; }
 
-        [Required]
-        public bool NeedCleaning { get; set; }
+            [Required]
+            public decimal Price { get; set; }
 
-        // Navigationsproperty för att skapa relationen
-        public ICollection<Booking> Bookings { get; set; }
+            [Required]
+            public bool NeedCleaning { get; set; }
+        }
     }
-}
+

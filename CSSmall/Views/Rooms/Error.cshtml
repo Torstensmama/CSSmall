@@ -1,0 +1,27 @@
+﻿@model CSSmall.Models.ErrorViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Fel";
+}
+
+<h1 class="text-danger">Något gick fel.</h1>
+
+@if (Model != null && Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> @Model.RequestId
+    </p>
+}
+
+@if (!string.IsNullOrEmpty(Model?.ErrorMessage))
+{
+    <p>
+        <strong>Felmeddelande:</strong> @Model.ErrorMessage
+    </p>
+}
+else
+{
+    <p>Ett oväntat fel inträffade. Vänligen försök igen senare.</p>
+}
+
+<a asp-action="Index" asp-controller="Rooms" class="btn btn-primary">Tillbaka till startsidan</a>

@@ -3,30 +3,31 @@
     ViewData["Title"] = "Boka rum";
 }
 <body>
-<section class="room-search">
-    <div class="search-container">
-        <div class="search-field">
-            <label>Checka in</label>
-            <input type="date">
+    <section class="room-search">
+        <div class="search-container">
+            <form method="get" asp-action="Index">
+                <div class="search-field">
+                    <label>Checka in</label>
+                    <input type="date" name="checkIn" required>
+                </div>
+                <div class="search-field">
+                    <label>Checka ut</label>
+                    <input type="date" name="checkOut" required>
+                </div>
+                <div class="search-field">
+                    <label>Antal vuxna</label>
+                    <input type="number" name="adults" value="@ViewData["Adults"]" min="1" required>
+                </div>
+
+                <div class="search-field">
+                    <label>Antal barn</label>
+                    <input type="number" name="children" value="@ViewData["Children"]" min="0">
+                </div>
+
+                <button type="submit" class="search-button">Sök</button>
+            </form>
         </div>
-        <div class="search-field">
-            <label>Checka ut</label>
-            <input type="date">
-        </div>
-        <div class="search-field">
-            <label>Gäster</label>
-            <select>
-                <option> 1 </option>
-                <option> 2  </option>
-                <option> 3 </option>
-                <option> 4 </option>
-                <option> 5 </option>
-                <option> 6 </option>
-            </select>
-        </div>
-        <button class="search-button">Sök</button>
-    </div>
-</section>
+    </section>
 
     <section class="hotel-images">
         <div class="main-image">
@@ -39,10 +40,7 @@
             <img src="~/images/spa.png" alt="Hotellbild 4">
         </div>
     </section>
-    <div> 
-
-    </div>
-
+    <div>   </div>
 
     <!-- Lediga rum-listan -->
     <section class="room-selection">
@@ -52,7 +50,7 @@
         {
             <div class="room-card">
                 <div class="room-images">
-                    <img src="~/images/@room.RoomType.ToLower()/room1.png" alt="@room.RoomType">
+                    <img src="~/images/@room.RoomType.ToLower()/hotel.png" alt="@room.RoomType">
                 </div>
 
                 <div class="room-info">
@@ -63,16 +61,20 @@
                         <input type="hidden" name="roomId" value="@room.RoomID" />
                         <input type="hidden" name="checkIn" value="@ViewData["CheckIn"]" />
                         <input type="hidden" name="checkOut" value="@ViewData["CheckOut"]" />
-                        <input type="hidden" name="adults" value="2" />
-                        <input type="hidden" name="children" value="0" />
+
+                        <label for="customerName">Ditt namn:</label>
+                        <input type="text" name="customerName" required />
+
+                        <input type="hidden" name="adults" value="@ViewData["Adults"]" />
+                        <input type="hidden" name="children" value="@ViewData["Children"]" />
 
                         <button type="submit" class="book-button">Boka</button>
                     </form>
+
                 </div>
             </div>
         }
     </section>
-
 
     <section class="room-selection">
         <h2>Utbud av rum på Hotell Lyx</h2>
@@ -157,8 +159,6 @@
 
             </div>
         
-        </div>
-
         </div>
 
     </section>

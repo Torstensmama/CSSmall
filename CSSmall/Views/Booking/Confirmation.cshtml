@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Bokningsbekräftelse";
+}
+<div>
+<h2>Tack för din bokning, @ViewData["CustomerName"]!</h2>
+    <p>Din bokning har registrerats och bekräftats.</p>
+</div>
+
+<div class="confirmation-details">
+    <h3>Bokningsdetaljer</h3>
+    <p><strong>Gästens namn:</strong> @ViewData["CustomerName"] </p>
+    <p><strong>Incheckning:</strong> @ViewData["CheckIn"]</p>
+    <p><strong>Utcheckning:</strong> @ViewData["CheckOut"]</p>
+    <p><strong>Antal vuxna:</strong> @ViewData["Adults"]</p>
+    <p><strong>Antal barn:</strong> @ViewData["Children"]</p>
+    <p><strong>Totalpris:</strong> @ViewData["TotalSum"] SEK</p>
+
+    <p>Vi ser fram emot att välkomna dig till vårt hotell!</p>
+
+    <a asp-action="Index" asp-controller="Rooms" class="btn btn-primary">Tillbaka till startsidan</a>
+</div>

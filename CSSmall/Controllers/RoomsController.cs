@@ -3,42 +3,61 @@ using CSSmall.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CSSmall.Controllers
 {
     public class RoomsController : Controller
-    {
-        private readonly AppDbContext _context;
-
-        public RoomsController(AppDbContext context)
         {
-            _context = context;
-        }
+            private readonly HttpClient _httpClient;
 
-        public IActionResult Index(DateTime? checkIn, DateTime? checkOut, int guests = 1)
-        {
-            // Hämta lediga rum
-            var availableRooms = _context.Rooms
-                .Where(r => r.IsVacant)
-                .ToList();
-
-            if (checkIn != null && checkOut != null)
+            public RoomsController(IHttpClientFactory httpClientFactory)
             {
-                // Hämta alla bokningar som överlappar med önskade datum
-                var bookedRooms = _context.Bookings
-                    .Where(b =>
-                        (b.StartDate < checkOut && b.EndDate > checkIn))
-                    .Select(b => b.RoomID)
-                    .ToList();
-
-                // Filtrera bort de rum som är upptagna
-                availableRooms = availableRooms
-                    .Where(r => !bookedRooms.Contains(r.RoomID))
-                    .ToList();
+                _httpClient = httpClientFactory.CreateClient();
             }
 
-            return View(availableRooms);
-        }
+        public async Task<IActionResult> Index(DateTime? checkIn, DateTime? checkOut, int adults = 1, int children = 0)
+        {
+            ViewData["CheckIn"] = checkIn;
+            ViewData["CheckOut"] = checkOut;
+            ViewData["Adults"] = adults;
+            ViewData["Children"] = children;
+
+            var apiUrl = "https://informatik1.ei.hv.se/RoomAPI/api/room";
+            List<Room> rooms = new();
+
+            try
+                {
+                    var response = await _httpClient.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonData = await response.Content.ReadAsStringAsync();
+                        rooms = JsonConvert.DeserializeObject<List<Room>>(jsonData)
+                            .Where(r => r.IsVacant) // Endast lediga rum
+                            .ToList();
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Kunde inte hämta rumsdata.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Error = $"Fel vid API-anrop: {ex.Message}";
+                }
+
+            ViewData["CheckIn"] = checkIn;
+            ViewData["CheckOut"] = checkOut;
+            ViewData["Adults"] = adults;
+            ViewData["Children"] = children;
+
+            return View(rooms);
+            }
 
         public IActionResult DetailsStandard()
         {

@@ -9,8 +9,6 @@ namespace CSSmall.Data
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-
-
         public DbSet<ApiUsageLog> ApiUsageLogs { get; set; } // INLOGGNING
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,11 +16,7 @@ namespace CSSmall.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Booking>()
-                .HasOne(b => b.Room)
-                .WithMany(r => r.Bookings)
-                .HasForeignKey(b => b.RoomID)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasKey(b => b.BookingID);  // Endast primärnyckeln krävs
         }
-
     }
 }
