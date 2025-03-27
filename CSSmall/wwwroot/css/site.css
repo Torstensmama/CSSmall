@@ -108,7 +108,7 @@ nav {
     justify-content: center;
     text-align: center;
     height: 90vh;
-    background-image: url('/images/lobby.png');
+    background-image: url('/StartGUI/images/lobby.png');
     background-size: cover;
     background-position: center;
     color: white;
@@ -391,14 +391,14 @@ footer {
 
 /* Ändra storleken på den stora bilden */
 .main-image {
-    flex: 1.5; /* Gör den mindre relativt till små bilder */
-    max-width: 500px; /* Begränsar storleken */
+    flex: 1.5; 
+    max-width: 500px;
 }
 
     .main-image img {
         width: 100%;
         height: auto;
-        max-height: 350px; /* Justera höjd */
+        max-height: 350px; 
     }
 
 /* Små bilder */
@@ -406,8 +406,8 @@ footer {
     display: flex;
     flex-direction: column ;
     gap: 10px;
-    flex: 1; /* Gör små bilder proportionellt större */
-    max-width: 120px; /* Minska maxbredd */
+    flex: 1; 
+    max-width: 120px;
 }
 
     .small-images img {
@@ -466,35 +466,6 @@ footer {
 
     }
 
-/* 📌 LISTA MED LEDIGA RUM 
-.available-rooms {
-    padding: 40px;
-    text-align: center;
-   
-}
-
-.room-list {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.room-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    text-align: center;
-   background-color: var(--primary-color);
-}
-
-    .room-card img {
-        width: 100%;
-        border-radius: 10px;
-    }
-*/
 
 .book-button {
     background-color: var(--primary-color);
@@ -535,12 +506,12 @@ footer {
 .room-card {
     display: flex;
     background: white;
-    width: 100%; /* Anpassa bredden baserat på skärmens storlek */
+    width: 100%;
     max-width: 1700px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto 30px auto; /* Centrerar kortet */
+    margin: 0 auto 30px auto; 
     gap: 20px;
 }
 

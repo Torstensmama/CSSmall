@@ -26,18 +26,24 @@
 
         <ul class="nav-links">
             <li><a asp-controller="Rooms" asp-action="Index">Rum</a></li>
-            <li><a asp-controller="Home" asp-action="Food">Mat & Dryck</a></li>
-            <li><a asp-controller="Home" asp-action="Event">Event</a></li>
-            <li><a asp-controller="Home" asp-action="Offers">Erbjudanden</a></li>
+            <li><a href="https://informatik3.ei.hv.se/RestaurangGUI">Mat & Dryck</a></li>
+            <li><a href="https://informatik2.ei.hv.se/MonitoringGUI/Event">Event</a></li>
+            <li><a href="https://informatik2.ei.hv.se/MonitoringGUI/Offer">Erbjudanden</a></li>
 
             @if (roleID == 1) // Visa Admin endast för behöriga användare
             {
                 <li><a href= "https://informatik2.ei.hv.se/MonitoringGUI" >Admin</a></li>
             }
+            @if (roleID == 2) // Visa endast för rollid 2 användare
+            {
+                <li><a href="https://informatik1.ei.hv.se/StaffGUI">Bokning & Rum</a></li>
+                <li><a href="https://informatik4.ei.hv.se/CleaningGUI">Städning</a></li>
+            }
 
         </ul>
-        <a href="/Login" class="button login-btn">
-            <img src="~/images/login.png" alt="Logga in" class="login-icon"> Logga in</a>
+        <a asp-controller="Account" asp-action="Index" class="button login-btn">
+            <img src="~/images/login.png" alt="Logga in" class="login-icon"> Logga in
+        </a>
     </nav>
 
     <main>

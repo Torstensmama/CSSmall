@@ -49,9 +49,14 @@
         @foreach (var room in Model)
         {
             <div class="room-card">
-                <div class="room-images">
-                    <img src="~/images/@room.RoomType.ToLower()/hotel.png" alt="@room.RoomType">
+                <div class="main-image">
+                    <img src="~/images/@(room.RoomType == "Deluxe" ? "Deluxe/deluxe1.png" :
+                        room.RoomType == "Standard" ? "Standard/standard1.png" :
+                        room.RoomType == "Svit" ? "Suite/suite1.png" :
+                        "hotel.png")"
+                         alt="@room.RoomType">
                 </div>
+
 
                 <div class="room-info">
                     <h3>@room.RoomType</h3>
@@ -81,25 +86,17 @@
 
         <!-- Standardrum -->
         <div class="room-card">
-            <div class="room-images">
+            <div class="main-image">
                 <img src="~/images/Standard/standard1.png" alt="Standard">
             </div>
             <div class="room-info">
                 <h3>Standard</h3>
                 <p><strong>Queen Size-säng eller enkelsäng</strong> | 25 kvm</p>
-                <p>Vårt standardrum erbjuder en harmonisk balans mellan stil och komfort. 
+                <p>Vårt standardrum erbjuder en harmonisk balans mellan stil och komfort.    </p>
+                <p>
                     Här sover du gott i en skön dubbelsäng eller två enkelsängar, omgiven av en lugn och elegant inredning.
                 </p>
                   
-                <div class="price-options">
-                    <label><input type="radio" name="standard-price" checked> Ej återbetalningsbar - 1390 SEK</label>
-                    <label><input type="radio" name="standard-price"> Fri avbokning - 1780 SEK</label>
-                </div>
-
-                <div class="total-price">
-                    <strong>Total: 1390 SEK</strong>
-                </div>
-                <button class="book-button">Boka</button>
                 <a href="@Url.Action("DetailsStandard", "Rooms")" class="info-button">Mer information</a>
 
             </div>
@@ -108,7 +105,7 @@
 
         <!-- Deluxerum -->
         <div class="room-card">
-            <div class="room-images">
+            <div class="main-image">
                 <img src="~/images/Deluxe/deluxe1.png" alt="Deluxe">
                            </div>
             <div class="room-info">
@@ -117,15 +114,7 @@
                 <p>Vårt Deluxerum på 30 kvadratmeter erbjuder extra utrymme och lyxiga detaljer för en ännu mer komfortabel vistelse. </p>
                 <p>Rummet är smakfullt inrett med stilrena möbler, en lyxig dubbelsäng och stora fönster som släpper in vackert ljus. </p>
 
-                <div class="price-options">
-                    <label><input type="radio" name="deluxe-price" checked> Ej återbetalningsbar - 2250 SEK</label>
-                    <label><input type="radio" name="deluxe-price"> Fri avbokning - 2500 SEK</label>
-                </div>
 
-                <div class="total-price">
-                    <strong>Total: 2250 SEK</strong>
-                </div>
-                <button class="book-button">Boka</button>
                 <a href="@Url.Action("DetailsDeluxe", "Rooms")" class="info-button">Mer information</a>
 
 
@@ -135,8 +124,8 @@
 
         <!-- Svit -->
         <div class="room-card">
-            <div class="room-images">
-                <img src="~/images/Suite/suite1.png" alt="Svit">           
+            <div class="main-image">
+                <img src="~/images/Suite/suite1.png" alt="Svit">
             </div>
             <div class="room-info">
                 <h3>Svit</h3>
@@ -145,15 +134,7 @@
                 <p> Här möts du av en rymlig och stilfull miljö med en separat sovdel, en elegant vardagsrumsdel och en privat balkong med fantastisk utsikt.</p>
                 <p> Den lyxiga badrumsupplevelsen inkluderar både regndusch och ett fristående badkar, perfekt för avkoppling. </p>
               
-                <div class="price-options">
-                    <label><input type="radio" name="suite-price" checked> Ej återbetalningsbar - 4950 SEK</label>
-                    <label><input type="radio" name="suite-price"> Fri avbokning - 5120 SEK</label>
-                </div>
-
-                <div class="total-price">
-                    <strong>Total: 4950 SEK</strong>
-                </div>
-                <button class="book-button">Boka</button>
+              
                 <a href="@Url.Action("DetailsSvit", "Rooms")" class="info-button">Mer information</a>
 
 

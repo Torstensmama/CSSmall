@@ -15,7 +15,7 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult Login()
+    public IActionResult Index()
     {
         return View();
     }
